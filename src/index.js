@@ -17,16 +17,19 @@ const onClickAdd = () => {
   p.className = "todo-item";
   p.innerText = inputText;
 
-  //make button tag
+  //make complete button tag
   const completeButton = document.createElement("button");
   completeButton.innerText = "完了";
   completeButton.addEventListener("click", () => {
     alert("完了");
   });
+
+  // make delete button tag
   const deleteButton = document.createElement("button");
   deleteButton.innerText = "削除";
   deleteButton.addEventListener("click", () => {
-    alert("削除");
+    const deleteTarget = deleteButton.parentNode.parentNode;
+    document.getElementById("incomplete-list").removeChild(deleteTarget);
   });
 
   // make child tag
