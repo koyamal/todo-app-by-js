@@ -21,7 +21,35 @@ const onClickAdd = () => {
   const completeButton = document.createElement("button");
   completeButton.innerText = "完了";
   completeButton.addEventListener("click", () => {
-    alert("完了");
+    const completeItem = completeButton.parentNode;
+    const completeItemName = completeItem.firstChild.innerText;
+
+    // delete complete item from incomplete area
+    const deleteTarget = completeItem.parentNode;
+    document.getElementById("incomplete-list").removeChild(deleteTarget);
+
+    // add complete item into complete area
+    //make li tag
+    const li = document.createElement("li");
+
+    // make div tag
+    const div = document.createElement("div");
+    div.className = "list-row";
+
+    //make p tag
+    const p = document.createElement("p");
+    p.className = "todo-item";
+    p.innerText = completeItemName;
+
+    //make back button tag
+    const backButton = document.createElement("button");
+    backButton.innerText = "戻す";
+
+    // make child tag
+    li.appendChild(div);
+    div.appendChild(p);
+    div.appendChild(backButton);
+    document.getElementById("complete-list").appendChild(li);
   });
 
   // make delete button tag
