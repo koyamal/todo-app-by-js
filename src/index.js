@@ -25,8 +25,7 @@ const onClickAdd = () => {
     const completeItemName = completeItem.firstChild.innerText;
 
     // delete complete item from incomplete area
-    const deleteTarget = completeItem.parentNode;
-    document.getElementById("incomplete-list").removeChild(deleteTarget);
+    deleteFromIncompleteList(completeItem.parentNode);
 
     // add complete item into complete area
     //make li tag
@@ -56,8 +55,7 @@ const onClickAdd = () => {
   const deleteButton = document.createElement("button");
   deleteButton.innerText = "削除";
   deleteButton.addEventListener("click", () => {
-    const deleteTarget = deleteButton.parentNode.parentNode;
-    document.getElementById("incomplete-list").removeChild(deleteTarget);
+    deleteFromIncompleteList(deleteButton.parentNode.parentNode);
   });
 
   // make child tag
@@ -68,6 +66,10 @@ const onClickAdd = () => {
 
   // add li into ul
   document.getElementById("incomplete-list").appendChild(li);
+};
+
+const deleteFromIncompleteList = (target) => {
+  document.getElementById("incomplete-list").removeChild(target);
 };
 
 document
