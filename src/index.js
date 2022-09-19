@@ -62,10 +62,22 @@ const createIncompleteList = (text) => {
       createIncompleteList(backItemName);
     });
 
+    //make delete button tag at complete area
+    const deleteButtonFromCompleteArea = document.createElement("button");
+    deleteButtonFromCompleteArea.innerText = "削除";
+    deleteButtonFromCompleteArea.addEventListener("click", () => {
+      const deleteItem = deleteButtonFromCompleteArea.parentNode;
+
+      // delete Item
+      const deleteTarget = deleteItem.parentNode;
+      document.getElementById("complete-list").removeChild(deleteTarget);
+    });
+
     // make child tag
     li.appendChild(div);
     div.appendChild(p);
     div.appendChild(backButton);
+    div.appendChild(deleteButtonFromCompleteArea);
     document.getElementById("complete-list").appendChild(li);
   });
 
